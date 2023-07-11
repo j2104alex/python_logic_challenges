@@ -157,3 +157,100 @@ def hash_tuppla():
     print(hash(tup))
 
 #hash_tuppla()
+
+'''You are given a string and your task is to swap cases. In other words, convert all lowercase letters to uppercase letters and vice versa.'''
+def swap_case(s):
+    x=s.swapcase()
+    print(x)
+#swap_case('bACa')
+
+'''split space delimiter and join with "-"'''
+def split_and_join(line):
+    line=line.split(' ')
+    line=('-').join(line)
+    print(line)
+
+#split_and_join('This is a string')
+
+'''We have seen that lists are mutable (they can be changed), and tuples are immutable (they cannot be changed).'''
+def mutate_string(string, position, character):
+    lista=list(string)
+    lista[position]=character
+    string=('').join(lista)
+    return string
+#print(mutate_string('abracadabra',5,'k'))
+
+'''In this challenge, the user enters a string and a substring. You have to print the number of times that the substring occurs in 
+the given string. String traversal will take place from left to right, not from right to left.'''
+def count_substring(string, sub_string):
+    count=0
+    sub_length=len(sub_string)
+
+    for i in range (len(string)-sub_length+1):
+        if string[i:i+sub_length]==sub_string:
+            count+=1
+    return count
+
+#print(count_substring('ABCDCDC','CDC'))
+
+import textwrap
+
+'''You are given a string s and w width .
+Your task is to wrap the string into a paragraph of width .'''
+def wrap(string, max_width):
+    text_wrap=textwrap.wrap(string,max_width)
+    text_join=('\n').join(text_wrap)
+    return text_join
+
+'''Given an n integer, , print the following values  for each integer i from  
+1 to n:
+
+Decimal
+Octal
+Hexadecimal (capitalized)
+Binary'''
+def print_formatted(number):
+    width = len(bin(number)[2:])  # Ancho maximo del binario que es el numero mas largo de las representaciones
+    for i in range(1, number + 1):
+        # Ajustar texto a la derecha con base al ancho de wisth
+        decimal = str(i).rjust(width)
+        octal = oct(i)[2:].rjust(width)
+        hexadecimal = hex(i)[2:].upper().rjust(width)
+        binary = bin(i)[2:].rjust(width)
+
+        print(f'{decimal} {octal} {hexadecimal} {binary}')
+        # Nota: En los octals, hexadecimales y binarios se anteponen prefijos por eso se ignora
+        # La primera posición
+        print(decimal, octal, hexadecimal, binary)
+
+#print_formatted(14)
+
+'''First letter capitalized'''
+def solve(s):
+    s=s.title()
+    return s
+#print(solve('hola mundo'))
+
+'''Ms. Gabriel Williams is a botany professor at District College. One day, 
+she asked her student Mickey to compute the average of all the plants with 
+distinct heights in her greenhouse.'''
+def average(array):
+    array_setted=set(array)
+    total_average=(sum(array_setted)/(len(array_setted)))
+    return total_average
+#print(average([161, 182, 161, 154, 176, 170, 167, 171, 170, 174]))
+
+'''Output the symmetric difference integers in ascending order, one per line.'''
+def symetric_difference():
+    data = []
+    for n in range(4):
+        question = input()
+        data.append(question)
+
+    a = set(map(int, data[1].split()))
+    b = set(map(int, data[3].split()))
+
+    sym_difference = sorted(a.symmetric_difference(b))
+
+    for number in sym_difference:
+        print(number)
