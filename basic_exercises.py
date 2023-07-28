@@ -2,6 +2,8 @@ import calendar
 import re
 import textwrap
 from collections import defaultdict
+from itertools import product
+from itertools import permutations
 
 '''Given the participans score sheet for your University Sports Day, you are in required to find the runner-up-score
 (segunda puntuacion). You are given n scores. Store them in a list and find the score of the runner-up'''
@@ -396,3 +398,55 @@ def default_dict(a,b):
 a=['a', 'b', 'a']
 b=['a','c']
 default_dict(a,b)
+
+def product_cobinations():
+    '''La función product es una función del módulo itertools en Python, y se utiliza para calcular el producto cartesiano
+    de dos o más conjuntos. El producto cartesiano de dos conjuntos A y B es un conjunto de todas las posibles combinaciones
+    de elementos donde cada combinación contiene un elemento de A y otro de B.'''
+
+    a = input()
+    b = input()
+    '''Pasar a entero en un loop de a y b, despues de aplicar un split o separador en los espacios en blanco'''
+    a = [int(x) for x in a.split()]
+    b = [int(x) for x in b.split()]
+
+    '''Se convierte a una lista a y b, despues se aplica el metodo product'''
+    axb = list(product(a, b))
+
+    '''Se organiza el formato uniendo con el separador de  espacios y convirtiendo a string pada pair del loop de axb
+    primer paso: 
+    lista_de_cadenas = [str(pair) for pair in axb]
+    segundo paso: 
+    cadena_resultante = " ".join(lista_de_cadenas)
+
+    '''
+    print(" ".join([str(pair) for pair in axb]))
+
+def permutacion_iterable_lexicographic_order():
+    '''This tool returns successive r length permutations of elements in an iterable.
+    The answer have to given lexicographic sorted order.'''
+
+    a = input().split()
+    letters = list(a[0])
+    iterations = int(a[1])
+
+    combinations = sorted(list(permutations(letters, iterations)))
+    for combination in combinations:
+        combination = (" ".join(combination)).replace(' ', '')
+        print(combination)
+
+def polar_coordinates():
+    import cmath
+
+    '''Polar coordinates are an alternative way of representing Cartesian coordinates or Complex Numbers
+    Is completely determinated by its real part x and imaginary part y
+    cmath module provides access to the mathematical functions for complex numbers
+    Example input 1+2j'''
+    x = complex(input())
+
+    '''cmath.phase returns the phase of complex number z'''
+    fase_radianes = cmath.phase(x)
+    absolute = abs(x)
+
+    print(absolute)
+    print(fase_radianes)
